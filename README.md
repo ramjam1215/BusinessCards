@@ -1,27 +1,11 @@
 # BusinessCardsApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.17.
+Issues:
+- So i downloaded the the semantic files and added them in sort of manually in the angular.json file. I placed it in the scripts and styles arrays. i got an error on the webpage about jquery not being defined, i believe.
+- I had to also place jquery BEFORE the semantics.css in the scripts array. It worked, and thats where i'm going to stop
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+node-package-manager
+installed jquery --save... i think thats technically there already 
+installed semantics-ui-css --save
+installed firebase @angular/fire --save
+installed rxjs --save

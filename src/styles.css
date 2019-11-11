@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+.jc {
+    background-color: deepskyblue;
+    border-radius: 20px;
+    padding: 10px;
+    color: #fff;
+    cursor: pointer;
+    margin-left: 70%;
+    font-size: 16px;
+  }
+  
