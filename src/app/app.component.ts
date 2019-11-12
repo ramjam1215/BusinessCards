@@ -28,6 +28,6 @@ export class AppComponent {
   //testing router guard
   //While testing... this hides the logout right now
   didLogin(): boolean{
-    return this.loginService.toNf();
+    return this.loginService.toCard();
   }
 }

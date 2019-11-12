@@ -36,13 +36,17 @@ export class LoginService {
       .then(res => {
         console.log('sign out successfull!');
         this.bCheck = false;
+        this.enableExit(false);
     })
       .catch(err => {
         console.log('Somethings is wrong...');
         console.log(err);
+        //maybe need these?
+        this.bCheck = false;
+        this.enableExit(false);
     });
   }
 
-  toNf(): boolean { return this.bTemp; }
+  toCard(): boolean { return this.bTemp; }
   enableExit(b:boolean){ this.bTemp = b; }
 }

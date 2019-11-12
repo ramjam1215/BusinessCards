@@ -11,12 +11,14 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { AuthGuardService } from './guard/auth-guard.service';
+import { NewBusinessCardComponent } from './new-business-card/new-business-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    NewBusinessCardComponent
   ],
   imports: [
     BrowserModule,

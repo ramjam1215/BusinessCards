@@ -7,7 +7,7 @@
   <div *ngIf="toRoute()">
 
     <div *ngIf="!didLogin()">
-      <a (click)="toTest()" class="jc" [routerLink]="['/nf']">NotFound!</a>
+      <a (click)="toTest()" class="jc" [routerLink]="['/newCard']">Create New BusinessCard</a>
     </div>
     
     <div *ngIf="didLogin()">
