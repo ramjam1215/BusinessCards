@@ -1,9 +1,18 @@
 # BusinessCardsApp
 
 # TODOs
-- As part of new BusinessCard i neeed to clear the form after succesful creation 
-- businessCard list will use the @Input to my businessCard component where it will display each Business Card
+- CRUD => so far I have completed C and R
+- need to clean up how the BusinessCards are presented( using <td> tags right now and its all kind of inline/ugly )
+- As part of new BusinessCard i neeed to clear the form after succesful creation(DONE?)
+- businessCard list will use the @Input to my businessCard component where it will display each Business Card (DONE)
 - Firebase hosting (not set yet)
+
+11-12-2019
+- added components; businessCards and businessCard
+- added a read method to my databaseService and called it in businessCards' ngOnInit( )
+- use @Input decorator to pass in each document in the collection to the buisnessCard component
+- added a route to the businessCardsComponent that is clickable from the appComponent
+- data is displayed, but it's not pretty 
 
 11-11-2019
 - created the database/businessCard project on firebase

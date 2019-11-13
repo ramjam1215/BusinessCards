@@ -20,7 +20,7 @@ export class AppComponent {
   }
 
   toTest():void {
-    console.log('Testing route to Not Found');
+    //console.log('Testing route to Not Found');
     this.loginService.enableExit(true);
   }
 

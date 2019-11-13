@@ -10,9 +10,14 @@
       <a (click)="toTest()" class="jc" [routerLink]="['/newCard']">Create New BusinessCard</a>
     </div>
     
+    <div *ngIf="!didLogin()">
+      <a (click)="toTest()" class="jc" [routerLink]="['/list']"> View BusinessCards </a>
+    </div>
+
     <div *ngIf="didLogin()">
       <a (click)="logOut()" class="jc" [routerLink]="['/login']">Logout</a>
     </div>
+
   </div>
 
 </div>

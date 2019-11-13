@@ -12,13 +12,17 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { AuthGuardService } from './guard/auth-guard.service';
 import { NewBusinessCardComponent } from './new-business-card/new-business-card.component';
+import { BusinessCardsComponent } from './business-cards/business-cards.component';
+import { BusinessCardComponent } from './business-card/business-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     NotFoundComponent,
-    NewBusinessCardComponent
+    NewBusinessCardComponent,
+    BusinessCardsComponent,
+    BusinessCardComponent
   ],
   imports: [
     BrowserModule,

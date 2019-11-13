@@ -30,6 +30,9 @@ export class DataBaseService {
     });
    }
 
+   getBusinessCards(){
+     return this.dataBase.collection(config.collection_endpoint).snapshotChanges();
+   }
 
   checkCardForm(bCard: BusinessCard) {
     console.log("fName:" + bCard.firstName);
@@ -44,7 +47,7 @@ export class DataBaseService {
     this.cardForm.reset();
   }
   
-  //need to test
+  
   createBusinessCard(data) {
     return new Promise<any>((resolve, reject) => {
       this.dataBase
@@ -53,6 +56,7 @@ export class DataBaseService {
           .then(res =>{}, err => reject(err));
     });
   }
+
 
 
 }
