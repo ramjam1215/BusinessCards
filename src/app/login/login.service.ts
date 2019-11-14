@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from '../user/user';
+import { User, AppState } from '../user/user';
 import { AngularFireAuth } from '@angular/fire/auth';
 
 
@@ -8,45 +8,42 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class LoginService {
 
-  private bCheck = false;
+  state: AppState;
+  constructor(private afAuth: AngularFireAuth) {
+    this.state = AppState.NOTAUTHORIZED;
+   }
 
-  private bTemp = false;
-  constructor(private afAuth: AngularFireAuth) { }
+   setState(s: number){
+     this.state = s;
+   }
 
   login(userInfo: User) {
     this.afAuth.auth.
       signInWithEmailAndPassword(userInfo.email, userInfo.password)
       .then(res => {
         console.log('Successfully signed in!');
-        this.bCheck = true;
+        this.state = 1;
         
       })
       .catch(err => {
         console.log('Somethings is wrong...');
         console.log(err);
+        this.state = 0;
       });
   }
 
-  isLoggedIn(): boolean {
-    return this.bCheck;
-  }
 
   logOut() {
     this.afAuth.auth.signOut()
       .then(res => {
         console.log('sign out successfull!');
-        this.bCheck = false;
-        this.enableExit(false);
+        this.state = 0;
     })
       .catch(err => {
         console.log('Somethings is wrong...');
         console.log(err);
-        //maybe need these?
-        this.bCheck = false;
-        this.enableExit(false);
+        this.state = 0;
     });
   }
 
-  toCard(): boolean { return this.bTemp; }
-  enableExit(b:boolean){ this.bTemp = b; }
 }

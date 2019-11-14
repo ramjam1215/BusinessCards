@@ -12,8 +12,22 @@ export class BusinessCardComponent {
   @Input() bCard: BusinessCard;
   @Input() i: number;
 
-  constructor(private databaseService: DataBaseService) { }
+  bEdit = false;
 
+  constructor(private dataBaseService: DataBaseService) { }
 
+  editMode(){ this.bEdit = !this.bEdit;}
 
+  showForm(){return this.bEdit;}
+
+  //we call finishEdit after we update our service form
+  //finished editting now update database
+  finishEdit(){
+    this.dataBaseService.updateBusinessCard(this.bCard.id);
+    this.editMode();
+  }
+
+  deleteCard(){
+    this.dataBaseService.deleteBusinessCard(this.bCard.id);
+  }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataBaseService } from '../service/data-base.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { validateEventsArray } from '@angular/fire/firestore';
 
 @Component({
   selector: 'new-business-card',
@@ -9,40 +10,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class NewBusinessCardComponent implements OnInit {
 
-  constructor(private dbService: DataBaseService, private formBuilder: FormBuilder) { }
+  bValid = false;
+  constructor(private dataBaseService: DataBaseService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {}
 
   onSubmit(){
-
-    if(this.dbService.cardForm.invalid){
-      this.dbService.clearForm();
-      console.log("invalid form");
-      //in here i could set a boolean to change the border-colors around the input
-      return;
-    }
-
-    let data = this.dbService.cardForm.value;
-    console.log(data);
-    //this.dbService.checkCardForm(data);
-    
-    this.dbService.createBusinessCard(data)
-      .then(res =>{
-        this.dbService.clearForm();
-        console.log("new business Card added");
-        console.log(res);
-       })
-       
-       .catch(err =>{
-          this.dbService.clearForm();
-          console.log('Somethings is wrong...');
-          console.log(err);
-       });
-
-      
-    //old code moved cardForm to database Service
-    //this.dbService.checkCardForm(this.cardForm.value);
-
+    this.bValid = this.dataBaseService.sendForm();
   }
 
 }

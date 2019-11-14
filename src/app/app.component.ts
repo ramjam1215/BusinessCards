@@ -10,24 +10,15 @@ export class AppComponent {
 
   constructor(private loginService: LoginService){}
 
-  toRoute(): boolean{
-    return this.loginService.isLoggedIn();
-  }
+  getState(): number{ return this.loginService.state }
 
   logOut(): void{
     console.log('logOut ref clicked');
     this.loginService.logOut();
   }
 
-  toTest():void {
-    //console.log('Testing route to Not Found');
-    this.loginService.enableExit(true);
+  changeState(s: number){
+    this.loginService.setState(s);
   }
 
-  //basically returning false for right now
-  //testing router guard
-  //While testing... this hides the logout right now
-  didLogin(): boolean{
-    return this.loginService.toCard();
-  }
 }

@@ -3,7 +3,7 @@
 <!-- need to work on forms -->
 <!-- ngModel, 2 way binding ng-book pg 184 -->
 <div class="login">
-    <form [formGroup]="this.dbService.cardForm" class="login-container" (ngSubmit)="onSubmit()">
+    <form [formGroup]="this.dataBaseService.cardForm" class="login-container" (ngSubmit)="onSubmit()">
         <p>
             <input type="firstName" placeholder="FirstName" formControlName="firstName">
         </p>

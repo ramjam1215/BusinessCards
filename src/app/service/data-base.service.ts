@@ -9,6 +9,7 @@ import {
   AngularFirestoreCollection 
 } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { reject } from 'q';
 
 //Firestore ref
 //URL: https://itnext.io/how-to-crud-in-angular-firebase-firestore-456353d7c62
@@ -19,7 +20,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 export class DataBaseService {
   
   cardForm: FormGroup;
-  
+  bCheck: boolean = false;
+
   constructor(private dataBase: AngularFirestore, private formBuilder: FormBuilder) {
     this.cardForm = this.formBuilder.group({
       'firstName':    ['', Validators.required],
@@ -30,33 +32,106 @@ export class DataBaseService {
     });
    }
 
-   getBusinessCards(){
-     return this.dataBase.collection(config.collection_endpoint).snapshotChanges();
-   }
+  clearForm(){
+    this.cardForm.reset();
+  }
 
+
+  getBusinessCards(){
+    return this.dataBase.collection(config.collection_endpoint).snapshotChanges();
+  }
+ 
+  checkCardForm(){
+    console.log(this.cardForm.value);
+    this.clearForm();
+  }
+
+
+  sendForm(): boolean{
+
+    if(this.cardForm.invalid){
+      this.clearForm();
+      console.log("invalid form");
+      this.bCheck = false;
+      return this.bCheck;
+    }
+    
+    let data = this.cardForm.value;
+    console.log(data);    
+      
+    this.createBusinessCard(data)
+        .then(res =>{
+          this.clearForm();
+          console.log("new business Card added");
+          console.log(res);
+          this.bCheck = true;
+        })
+       
+        .catch(err =>{
+          this.clearForm();
+          console.log('Somethings is wrong...');
+          console.log(err);
+          this.bCheck = false;
+        });
+
+    return this.bCheck;
+    
+  }
+
+  createBusinessCard(data) {
+    return new Promise<any>((resolve, reject) => {
+      this.dataBase
+          .collection(config.collection_endpoint)
+          .add(data);
+          //.then(res =>{}, err => reject(err));
+    });
+  }
+
+  /*
+  practice(uid: string){
+    let data = this.cardForm.value;
+    return new Promise<any>((resolve, reject) => {
+      this.dataBase.collection(config.collection_endpoint)
+      .doc(uid)
+      .set(data, {merge: true});
+    });
+  }
+  */
+
+  //not great, need to test and fix later
+  updateBusinessCard(uid: string){
+
+    if(this.cardForm.invalid){
+      this.clearForm();
+      console.log("invalid form");
+      return;
+    }
+
+    let data = this.cardForm.value;
+    return this.dataBase
+      .collection(config.collection_endpoint)
+      .doc(uid)
+      .set(data, {merge: true});
+
+  }
+
+  deleteBusinessCard(uid:string){
+    return this.dataBase.collection(config.collection_endpoint)
+    .doc(uid)
+    .delete();
+  }
+
+}
+
+
+   /*
   checkCardForm(bCard: BusinessCard) {
+    console.log("UID:" + bCard.id);
     console.log("fName:" + bCard.firstName);
     console.log("lName:" + bCard.lastName);
     console.log("email:" + bCard.email);
     console.log("Info:" + bCard.info);
     console.log("phone#:" + bCard.phoneNumber);
-    
+    this.clearForm();
   }
-
-  clearForm(){
-    this.cardForm.reset();
-  }
-  
-  
-  createBusinessCard(data) {
-    return new Promise<any>((resolve, reject) => {
-      this.dataBase
-          .collection(config.collection_endpoint)
-          .add(data)
-          .then(res =>{}, err => reject(err));
-    });
-  }
-
-
-
-}
+  */

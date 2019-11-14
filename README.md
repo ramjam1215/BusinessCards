@@ -1,11 +1,20 @@
 # BusinessCardsApp
 
 # TODOs
-- CRUD => so far I have completed C and R
-- need to clean up how the BusinessCards are presented( using <td> tags right now and its all kind of inline/ugly )
-- As part of new BusinessCard i neeed to clear the form after succesful creation(DONE?)
-- businessCard list will use the @Input to my businessCard component where it will display each Business Card (DONE)
+- As part of the newBusinessCard and Card list component navigation: i used the same formGroup object from my databaseService,
+which caused some old text persisting on the form after navigation (need to clean it up)
+- when editButton is pressed my form popus up underneath the Card, I want it presented horizontally
+- Started to familiarize myself with semantics UI CSS, which cleans up the look of the app. But i need to fully eliminate my older CSS stuff 
 - Firebase hosting (not set yet)
+ 
+ # My Web Dev MOTTO: keep components simple stupid
+
+11-13-2019
+- businessCard list uses the @Input to my businessCard component where it will display each Business Card
+- cleaned up how the BusinessCards are presented( used sematics UI to order BusinessCard properties into a list 
+- CRUD => completed all parts(Create, Read, Update, and Delete) when dealing with a database and web app communication
+- i added a State to my loginService to help with navigation after realizing i had too much logic in app.Component,
+    which cause alot of navigation issues 
 
 11-12-2019
 - added components; businessCards and businessCard

@@ -11,7 +11,7 @@ export class AuthGuardService implements CanActivate {
   constructor(private loginService: LoginService) { }
 
   canActivate(): boolean | Observable<boolean> | Promise<boolean>{
-    const bVal = this.loginService.isLoggedIn();
+    const bVal = this.loginService.state > 0;
     console.log('canActivate', bVal);
     return bVal;
   }

@@ -1,8 +1,52 @@
-<p>business-card works!</p>
 
-<td> {{i + 1}} </td>
-<td> firstName: {{bCard.firstName }}</td>
-<td> lastName: {{bCard.lastName }}</td>
-<td> email: {{bCard.email }}</td>
-<td> additonal Info: {{bCard.info }}</td>
-<td> phone#: {{bCard.phoneNumber }}</td>
+<!-- Business Card layout-->
+<span>
+    <div class="ui list">
+        <div class="header">Business Card#{{i + 1}} </div>
+        <div class="item">UID: {{ bCard.id }} (for testing) </div>
+        <div class="item">firstName: {{bCard.firstName }} </div>
+        <div class="item">lastName: {{bCard.lastName }} </div>
+        <div class="item">email: {{bCard.email }}</div>
+        <div class="item">additonal Info: {{bCard.info }}</div>
+        <div class="item">phone#: {{bCard.phoneNumber }}</div>
+
+        <span>
+            <button class="ui button" (click)="editMode()">Edit</button>
+            <button class="negative ui button" (click)="deleteCard()">Delete</button>
+        </span>
+    </div>
+
+    <!-- Breaking DRY principles here, i want to eventually replace this with the newBusinessCardComponent,  but baby steps-->
+    <div *ngIf="showForm()">
+        <form [formGroup]="this.dataBaseService.cardForm" class="login-container" (ngSubmit)="finishEdit()">
+            <p>
+                <input type="firstName" placeholder="FirstName" formControlName="firstName">
+            </p>
+                                
+            <p>
+                <input type="lastName" placeholder="LastName" formControlName="lastName">
+            </p>
+                                
+            <p>
+                <input type="email" placeholder="email address" formControlName="email">
+            </p>
+                                
+            <p>
+                <input type="info" placeholder="Additional Info" formControlName="info">
+            </p>
+                                
+            <p>
+                <input type="phoneNumber" placeholder="Phone #" formControlName="phoneNumber">
+            </p>
+                            
+            <p>
+                <input type="submit" value="Done">
+            </p>
+                
+        </form>
+    
+    </div>
+</span>
+
+<div class="ui section divider"></div>
+

@@ -12,7 +12,6 @@ import { LoginService } from './login.service';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
-  isSubmitted = false;
   constructor(private loginService: LoginService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
@@ -24,13 +23,14 @@ export class LoginComponent implements OnInit {
   
   getFormControls(){return this.loginForm.controls;}
 
+
   login() { 
     console.log(this.loginForm.value);
-    this.isSubmitted = true;
+    
     if(this.loginForm.invalid){
       return;
     }
-
+    
     this.loginService.login(this.loginForm.value);
   }
 

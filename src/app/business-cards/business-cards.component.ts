@@ -15,15 +15,17 @@ export class BusinessCardsComponent implements OnInit {
 
   constructor(private databaseService:DataBaseService) { }
 
-  //testing
   ngOnInit() {
 
     this.businessCardList = this.databaseService.getBusinessCards()
     .pipe(map(actions => {
       return actions.map(a => {
-        const data = a.payload.doc.data() as BusinessCard;
+        const data = a.payload.doc.data();
         const id = a.payload.doc.id;
 
+        //document.data is an iterable object
+        //property spread notation:
+        //basically builds the properties of this object for you
         return { id, ...data };
       });
     })
