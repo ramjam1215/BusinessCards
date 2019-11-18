@@ -14,6 +14,9 @@ import { AuthGuardService } from './guard/auth-guard.service';
 import { NewBusinessCardComponent } from './new-business-card/new-business-card.component';
 import { BusinessCardsComponent } from './business-cards/business-cards.component';
 import { BusinessCardComponent } from './business-card/business-card.component';
+import { WebcamModule } from 'ngx-webcam';
+import {WebCamComponent } from './web-cam/web-cam.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,8 @@ import { BusinessCardComponent } from './business-card/business-card.component';
     NotFoundComponent,
     NewBusinessCardComponent,
     BusinessCardsComponent,
-    BusinessCardComponent
+    BusinessCardComponent,
+    WebCamComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +36,8 @@ import { BusinessCardComponent } from './business-card/business-card.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    WebcamModule,
+    HttpClientModule
   ],
   providers: [AuthGuardService],
   bootstrap: [AppComponent]

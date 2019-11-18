@@ -1,13 +1,22 @@
 # BusinessCardsApp
 
 # TODOs
-- As part of the newBusinessCard and Card list component navigation: i used the same formGroup object from my databaseService,
-which caused some old text persisting on the form after navigation (need to clean it up)
-- when editButton is pressed my form popus up underneath the Card, I want it presented horizontally
+BIGGEST TODO => DISPLAY of entire webApp is UGLY NEED TO CLEAN IT!!!
+- As part of the newBusinessCard and Card list component navigation: i used the same formGroup object from my databaseService, which caused some old text persisting on the form after navigation (need to clean it up)
+- when editButton is pressed my form popus up underneath the Card, I want it presented horizontally   
+(use ui centered column from semantics ui)
 - Started to familiarize myself with semantics UI CSS, which cleans up the look of the app. But i need to fully eliminate my older CSS stuff 
 - Firebase hosting (not set yet)
- 
+- my webCam component and Image is SUPER UGLY and needs to be formatted better on page
+- Also need to extract data from Google vision api and place into FormGroup 
+
  # My Web Dev MOTTO: keep components simple stupid
+
+11-17-2019
+- added the Webcam component and ngx-webcam import
+- placed the webCam Component into the NewBusinessCardComponent
+- its ALL REALLY UGLY right now. But its working
+- also finished the http POST to google vision api. Its working, next i need to extract the data and place into FormGroup.
 
 11-13-2019
 - businessCard list uses the @Input to my businessCard component where it will display each Business Card
@@ -44,3 +53,4 @@ which caused some old text persisting on the form after navigation (need to clea
 - installed semantics-ui-css --save
 - installed firebase @angular/fire --save
 - installed rxjs --save
+- installed ngx-webcam --save
