@@ -1,13 +1,12 @@
-<p>web-cam works!</p>
-<div class="ui grid">
-    <div class="column">            
-        <webcam [height]="500" [width]="500" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
-            (initError)="handleInitError($event)"></webcam>
 
-        <button class="ui primary button" (click)="triggerSnapshot()">Click!</button>    
+<div class="column">            
+    <webcam [height]="500" [width]="500" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
+        (initError)="handleInitError($event)"></webcam>
+
+    <div class="jc-mid">
+        <button class="ui primary button" (click)="triggerSnapshot()">Take Picture!</button> 
     </div>
-
-    
-    
+       
 </div>
+
 

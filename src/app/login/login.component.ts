@@ -34,6 +34,13 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.loginForm.value);
   }
 
+  getMsg(): boolean {
+    if(this.loginService.state >= 1){
+      return true;
+    }
+
+    return false;
+  }
   
 
 }

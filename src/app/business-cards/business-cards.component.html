@@ -1,7 +1,7 @@
-<p>business-card List</p>
 
-<div class="login-container">
-    <business-card *ngFor="let card of businessCardList | async; let i = index" [i]="i" [bCard]="card" >
-
-    </business-card>
+<div class="pushRight">
+    <p class="login-header">business-card List</p>
 </div>
+
+<business-card *ngFor="let card of businessCardList | async; let i = index" [i]="i" [bCard]="card" ></business-card>
+

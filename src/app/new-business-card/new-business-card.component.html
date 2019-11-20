@@ -1,52 +1,49 @@
-<p>new-business-card</p>
 
-<div class="ui four column grid">
-    <div class="row">
-        <app-web-cam (pictureTaken)="getImage($event)"></app-web-cam>
-        
-        <div class="column" *ngIf="this.webcamImage">
-            <img [src]="webcamImage.imageAsDataUrl" />
-            <button class="ui primary button"  (click)="makeRequest()">Post It!</button>
+<div class="jc-column jc-border">
+    <h2 class="login-header">Business Card</h2>
+    <form [formGroup]="this.dataBaseService.cardForm" (ngSubmit)="onSubmit()">
+            
+        <label>Name</label>
+        <div class="two fields">
+            <input type="text" placeholder="FirstName" formControlName="firstName">
+            <input type="text" placeholder="LastName" formControlName="lastName">
         </div>
-        
-
-    </div>
-
-    <div class="login">
-            <form [formGroup]="this.dataBaseService.cardForm" class="login-container" (ngSubmit)="onSubmit()">
-                <p>
-                    <input type="firstName" placeholder="FirstName" formControlName="firstName">
-                </p>
                     
-                <p>
-                    <input type="lastName" placeholder="LastName" formControlName="lastName">
-                </p>
-                    
-                <p>
-                    <input type="email" placeholder="email address" formControlName="email">
-                </p>
-                    
-                <p>
-                    <input type="info" placeholder="Additional Info" formControlName="info">
-                </p>
-                    
-                <p>
-                    <input type="phoneNumber" placeholder="Phone #" formControlName="phoneNumber">
-                </p>
+        <div class="field">
+            <label>E-mail</label>
+            <input type="text" placeholder="email address" formControlName="email">
+        </div>
+                  
+        <div class="field">
+            <label>Additional Info</label>
+            <input type="text" placeholder="call or text Me" formControlName="info">
+        </div>
                 
-                <p>
-                        <input type="submit" value="Add Card">
-                </p>
-        
-            </form>
-        
+        <div class="field">
+            <label>Phone #</label>
+            <input type="text" placeholder="773-555-1234" formControlName="phoneNumber">
         </div>
+            
+        <div class="jc-mid">
+            <input class="ui submit green button" type="submit" value="Add Card">
+        </div>
+        
+
+    </form>
     
 </div>
 
+<div class="cam">
+    <app-web-cam (pictureTaken)="getImage($event)"></app-web-cam>
+</div>
 
-<!-- need to work on forms -->
-<!-- ngModel, 2 way binding ng-book pg 184 -->
+<div class="jc-column" *ngIf="this.webcamImage">
+    <img class="ui large image" [src]="webcamImage.imageAsDataUrl" />
+    <div class="jc-mid">
+        <button class="ui primary button"  (click)="makeRequest()">Post It!</button>
+    </div>
+    
+</div>
 
 
 

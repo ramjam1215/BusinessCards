@@ -1,23 +1,37 @@
 
-<h1> Login Page </h1>
-  <div class="login">
+  <div [ngClass]="{
+    'ui': true,
+    'login': true,
+    'form': true,
+    'pushDown': true,
+    'success': getMsg(),
+    'error' : !getMsg()
+    }">
     <h2 class="login-header">Log in</h2>
-    <!--
-      Reactive:
-        use [formGroup] & loginForm, from component, instead of ngForm.
-        which creates its own FormGroup-->
-    <form [formGroup]="loginForm" class="login-container" (ngSubmit)="login()">
+    <form [formGroup]="this.loginForm" (ngSubmit)="login()">
   
-      <p>
-        <input type="email" placeholder="Email" formControlName="email">
-      </p>
+      <div class="field">
+        <label class="mid">E-mail</label>
+        <input type="email" placeholder="jim@jam.com" formControlName="email">
+      </div>
+        
+      <div class="field">
+        <label class="mid">Password</label>
+        <input type="password" placeholder="not1234" formControlName="password">
+      </div>
+
+      <div class="ui error message">
+          <p class="mid">Currently not signed in</p>
+      </div>
+
+      <div class="ui success message">
+          <div class="header mid">Successful signIn</div>
+          <p class="mid">You have passsed the first test, enter if you dare!</p>
+      </div>
   
-      <p>
-        <input type="password" placeholder="Password" formControlName="password">
-      </p>
-  
-      <p>
-        <input type="submit" value="Log in">
-      </p>
+      <div class="jc-mid">
+          <input class="ui submit green button" type="submit" value="Log in">
+      </div>
+        
     </form>
   </div>

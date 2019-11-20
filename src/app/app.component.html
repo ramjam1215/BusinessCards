@@ -1,26 +1,26 @@
-<h1>Welcome to the Business Cards App!</h1>
+<h1 class="jc-mid">Welcome to the Business Cards App!</h1>
+
+<!-- Active after succesful login, this cascades and unlocks the Card Routes-->
+<div class="ui three item menu" *ngIf="getState() > 0">
+
+    <a (click)="changeState(2)" class="item" [routerLink]="['/newCard']" *ngIf="getState() == 1 || 3">
+      Create New BusinessCard
+    </a>
+
+    <a (click)="changeState(3)" class="item" [routerLink]="['/list']" *ngIf="getState() == 1 || 2">
+       View BusinessCards
+    </a>
+
+    <a (click)="logOut()" class="item" [routerLink]="['/login']">
+      Logout
+    </a>
+
+</div>
+
 <div id="content">
   <div>
     <router-outlet></router-outlet>
     <!-- Components shown here-->
-  </div>
-
-  <!-- Active after succesful login, this cascades and unlocks the Card Routes-->
-  <div class="ui horizontal list" *ngIf="getState() > 0">
-
-    <!-- didLogin is false initially so we see these only after succesful login-->
-    <div class="item" *ngIf="getState() == 1 || 3">
-      <a (click)="changeState(2)" class="jc" [routerLink]="['/newCard']">Create New BusinessCard</a>
-    </div>
-
-    <div class="item" *ngIf="getState() == 1 || 2">
-        <a (click)="changeState(3)" class="jc" [routerLink]="['/list']"> View BusinessCards </a>
-    </div>
-  
-    <div class="item">
-      <a (click)="logOut()" class="jc" [routerLink]="['/login']">Logout</a>
-    </div>
-
   </div>
 
 </div>
