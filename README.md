@@ -1,16 +1,18 @@
 # BusinessCardsApp
 
 # TODOs
-BIGGEST TODO => DISPLAY of entire webApp is UGLY NEED TO CLEAN IT!!!
+- WebApp looks alot better, and is sort of satisfactory right now. But, i can do a few more things to improve its appearance
 - As part of the newBusinessCard and Card list component navigation: i used the same formGroup object from my databaseService, which caused some old text persisting on the form after navigation (need to clean it up)
-- when editButton is pressed my form popus up underneath the Card, I want it presented horizontally   
-(use ui centered column from semantics ui)
-- Started to familiarize myself with semantics UI CSS, which cleans up the look of the app. But i need to fully eliminate my older CSS stuff 
-- Firebase hosting (not set yet)
-- my webCam component and Image is SUPER UGLY and needs to be formatted better on page
 - Also need to extract data from Google vision api and place into FormGroup 
-
+- need to center the data inside the businessCards when we show the list.
+- Firebase hosting (not set yet)
  # My Web Dev MOTTO: keep components simple stupid
+
+11-19-2019
+- Mostly working on the UI, html, and CSS stuff
+- Fixed when editButton is pressed my form now pops up next to the Card 
+- elimintaed all the CSS i used from other sources and implemented my own as well as the semantics ui
+- fixed my newCardComponent; now it shows the form, the webcam and the image taken in line
 
 11-17-2019
 - added the Webcam component and ngx-webcam import
