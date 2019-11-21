@@ -8,9 +8,26 @@ import { DataBaseService } from '../service/data-base.service';
 })
 export class CardFormComponent implements OnInit {
 
+  //bValid = false;
   constructor(private dataBaseService: DataBaseService) { }
 
   ngOnInit() {
   }
 
+  /*
+  onSubmit(from: number){
+    
+    //new Card
+    if(from == 1){
+      this.bValid = this.dataBaseService.sendForm(from);
+    }
+
+    //Editted Card
+    else{
+      this.bValid = this.dataBaseService.sendForm(from);
+    }
+    
+  }
+
+  */
 }
