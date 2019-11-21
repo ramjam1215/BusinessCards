@@ -2,8 +2,8 @@
 <!-- Business Card layout-->
 <div class="ui two column grid">
     <div class="row">
-            <div class="column pushRight jc-border">
-                    <div class="header">Business Card#{{i + 1}} </div>
+            <div class="column pushRight jc-border jc-mid">
+                    <div class="header ">Business Card#{{i + 1}} </div>
                     <div class="item">UID: {{ bCard.id }} (for testing) </div>
                     <div class="item">firstName: {{bCard.firstName }} </div>
                     <div class="item">lastName: {{bCard.lastName }} </div>
@@ -16,40 +16,11 @@
                         <button class="negative ui button" (click)="deleteCard()">Delete</button>
                     </span>
             </div>
-                    
-                <!-- Breaking DRY principles here, i want to eventually replace this with the FormComponent,  but baby steps-->
-                <div class="column  pushRight jc-border" *ngIf="showForm()" >
-                    <h2 class="login-header">Business Card</h2>
-                    <form [formGroup]="this.dataBaseService.cardForm" (ngSubmit)="onSubmit()">
-                                                
-                        <label>Name</label>
-                        <div class="two fields">
-                            <input type="text" placeholder="FirstName" formControlName="firstName">
-                            <input type="text" placeholder="LastName" formControlName="lastName">
-                        </div>
-                                                        
-                        <div class="field">
-                            <label>E-mail</label>
-                            <input type="text" placeholder="email address" formControlName="email">
-                        </div>
-                                                      
-                        <div class="field">
-                            <label>Additional Info</label>
-                            <input type="text" placeholder="call or text Me" formControlName="info">
-                        </div>
-                                                    
-                        <div class="field">
-                            <label>Phone #</label>
-                            <input type="text" placeholder="773-555-1234" formControlName="phoneNumber">
-                        </div>
-                                                
-                        <div class="jc-mid">
-                            <input class="ui submit green button" type="submit" value="Add Card">
-                        </div>
-                                            
-                    </form>
-                                        
-                </div>
+                  
+            <div class="column  pushRight jc-border" *ngIf="showForm()" >
+                <card-form></card-form> 
+            </div>
+              
 
     </div>    
 

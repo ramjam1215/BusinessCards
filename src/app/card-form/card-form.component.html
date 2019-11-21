@@ -1,0 +1,30 @@
+
+    <h2 class="login-header">Business Card</h2>
+    <form [formGroup]="this.dataBaseService.cardForm" (ngSubmit)="onSubmit()">
+                                
+        <label>Name</label>
+        <div class="two fields">
+            <input type="text" placeholder="FirstName" formControlName="firstName">
+            <input type="text" placeholder="LastName" formControlName="lastName">
+        </div>
+                                        
+        <div class="field">
+            <label>E-mail</label>
+            <input type="text" placeholder="email address" formControlName="email">
+        </div>
+                                      
+        <div class="field">
+            <label>Additional Info</label>
+            <input type="text" placeholder="call or text Me" formControlName="info">
+        </div>
+                                    
+        <div class="field">
+            <label>Phone #</label>
+            <input type="text" placeholder="773-555-1234" formControlName="phoneNumber">
+        </div>
+                                
+        <div class="jc-mid">
+            <input class="ui submit green button" type="submit" value="Add Card">
+        </div>
+                            
+    </form>

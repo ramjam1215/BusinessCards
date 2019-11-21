@@ -17,6 +17,7 @@ import { BusinessCardComponent } from './business-card/business-card.component';
 import { WebcamModule } from 'ngx-webcam';
 import {WebCamComponent } from './web-cam/web-cam.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CardFormComponent } from './card-form/card-form.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
     NewBusinessCardComponent,
     BusinessCardsComponent,
     BusinessCardComponent,
-    WebCamComponent
+    WebCamComponent,
+    CardFormComponent
   ],
   imports: [
     BrowserModule,

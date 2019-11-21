@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
 
 
   login() { 
-    console.log(this.loginForm.value);
+    //console.log(this.loginForm.value);
     
     if(this.loginForm.invalid){
       return;
@@ -35,11 +35,15 @@ export class LoginComponent implements OnInit {
   }
 
   getMsg(): boolean {
+    const bVal = this.loginService.isLoggedIn;
+    return bVal;
+    /*
     if(this.loginService.state >= 1){
       return true;
     }
 
     return false;
+    */
   }
   
 

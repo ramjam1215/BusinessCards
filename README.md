@@ -1,12 +1,19 @@
 # BusinessCardsApp
 
 # TODOs
-- WebApp looks alot better, and is sort of satisfactory right now. But, i can do a few more things to improve its appearance
-- As part of the newBusinessCard and Card list component navigation: i used the same formGroup object from my databaseService, which caused some old text persisting on the form after navigation (need to clean it up)
-- Also need to extract data from Google vision api and place into FormGroup 
-- need to center the data inside the businessCards when we show the list.
+- Need to extract data from Google vision api and place into FormGroup 
 - Firebase hosting (not set yet)
+- As part of the newBusinessCard and Card list component navigation: i used the same formGroup object from my databaseService, which caused some old text persisting on the form after navigation (need to clean it up)
+- WebApp looks alot better, and is sort of satisfactory right now. But, i can do a few more things to improve its appearance
+
  # My Web Dev MOTTO: keep components simple stupid
+
+11-20-2019
+- removed my redundant FormGroup(copy and pasted) in both my businessCard and NewBusinssCard Components, they both use a 
+Form Component for accepting input.
+- centered the data inside the businessCards when we show the list (simple CSS class)
+- i removed some logic when showing my navigation bar in the appComponent. 
+Now if canActivate( ) in the authguard returns false, it redirects to the NotFound Component.
 
 11-19-2019
 - Mostly working on the UI, html, and CSS stuff
@@ -43,7 +50,6 @@
 - I added the login component with firebase authentication(using a previous app's environment)
 - I also added the notFound component and services for routerGuards and authentication.
 - Right not my web app routes to the notFound page when we succesfully login and sends us to the login page when we logout.
-
 
 # Issues(solved):
 - i had to switch up the database rules so that authorized users are able to read and write

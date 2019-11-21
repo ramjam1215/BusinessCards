@@ -7,13 +7,13 @@ import { AuthGuardService } from './guard/auth-guard.service';
 import { BusinessCardsComponent } from './business-cards/business-cards.component';
 
 //might need to try the other variations of the router guards...
-const routes: Routes = [
-   //{ path: '', pathMatch: 'full', redirectTo: 'login' },
+export const routes: Routes = [
+   { path: '', redirectTo: 'login', pathMatch: 'full' },
    { path: 'login', component: LoginComponent },
    { path: 'nf', component: NotFoundComponent },
    { path: 'newCard', component: NewBusinessCardComponent, canActivate: [AuthGuardService] },
    { path: 'list', component: BusinessCardsComponent, canActivate: [AuthGuardService] },
-   { path: '**', component: LoginComponent }
+   { path: '**', redirectTo: 'nf' }
 
 ];
 

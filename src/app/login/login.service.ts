@@ -8,7 +8,10 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class LoginService {
 
+  isLoggedIn: boolean = false;
+
   state: AppState;
+
   constructor(private afAuth: AngularFireAuth) {
     this.state = AppState.NOTAUTHORIZED;
    }
@@ -22,13 +25,15 @@ export class LoginService {
       signInWithEmailAndPassword(userInfo.email, userInfo.password)
       .then(res => {
         console.log('Successfully signed in!');
-        this.state = 1;
+        //this.state = 1;
+        this.isLoggedIn = true;
         
       })
       .catch(err => {
         console.log('Somethings is wrong...');
         console.log(err);
-        this.state = 0;
+        //this.state = 0;
+        this.isLoggedIn = false;
       });
   }
 
@@ -37,12 +42,14 @@ export class LoginService {
     this.afAuth.auth.signOut()
       .then(res => {
         console.log('sign out successfull!');
-        this.state = 0;
+        this.isLoggedIn = false;
+        //this.state = 0;
     })
       .catch(err => {
         console.log('Somethings is wrong...');
         console.log(err);
-        this.state = 0;
+        this.isLoggedIn = false;
+        //this.state = 0;
     });
   }
 
