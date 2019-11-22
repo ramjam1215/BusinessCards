@@ -13,7 +13,6 @@ export class BusinessCardComponent {
   @Input() i: number;
 
   bEdit = false;
-
   constructor(private dataBaseService: DataBaseService) { }
 
   editMode(){ this.bEdit = !this.bEdit;}
@@ -23,11 +22,32 @@ export class BusinessCardComponent {
   //we call finishEdit after we update our service form
   //finished editting now update database
   finishEdit(){
-    this.dataBaseService.updateBusinessCard(this.bCard.id);
+    this.dataBaseService.updateBusinessCard(this.bCard.id)
+      .then(res =>{
+        this.dataBaseService.clearForm();
+        console.log("Editted Card pushed to database");
+        console.log(res);
+      })
+    
+      .catch(err =>{
+        this.dataBaseService.clearForm();
+        console.log("Something went wrong");
+        console.log(err);
+      });
+
     this.editMode();
   }
 
   deleteCard(){
-    this.dataBaseService.deleteBusinessCard(this.bCard.id);
+    this.dataBaseService.deleteBusinessCard(this.bCard.id)
+      .then(res =>{
+        console.log("Card deleted");
+        console.log(res);
+      })
+      
+      .catch(err =>{
+        console.log("Something went wrong");
+        console.log(err);
+      });
   }
 }

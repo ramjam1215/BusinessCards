@@ -47,18 +47,18 @@ export class DataBaseService {
   }
 
 
-  sendForm(): boolean{
+  sendForm(){
 
+    /*
     if(this.cardForm.invalid){
       this.clearForm();
       console.log("invalid form");
-      this.bCheck = false;
-      return this.bCheck;
+      return;
     }
-    
+    */
     let data = this.cardForm.value;
     console.log(data);    
-      
+    /*
     this.createBusinessCard(data)
         .then(res =>{
           this.clearForm();
@@ -75,16 +75,22 @@ export class DataBaseService {
         });
 
     return this.bCheck;
-    
+    */
   }
 
-  createBusinessCard(data) {
-    return new Promise<any>((resolve, reject) => {
-      this.dataBase
+  createBusinessCard() {
+    
+    if(this.cardForm.invalid){
+      this.clearForm();
+      console.log("invalid form");
+      return;
+    }
+
+    let data = this.cardForm.value;
+
+    return this.dataBase
           .collection(config.collection_endpoint)
           .add(data);
-          //.then(res =>{}, err => reject(err));
-    });
   }
 
   /*
