@@ -6,6 +6,11 @@
 
  # My Web Dev MOTTO: keep components simple stupid
  - except for my new-business-card component, it kind of does alot with the webcam and post requests
+
+11-22-2019
+- made some changes to how i read and parse the data from the OCR.
+- added some information to let the user know how to format the business card
+- added a button to the edit card portion to close the editMode form.
  
 11-21-2019
 - extracted data from Google vision api and placed into FormGroup

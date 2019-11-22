@@ -1,10 +1,10 @@
-import { Component, OnInit, ɵConsole, OnDestroy } from '@angular/core';
+import { Component, OnInit,  OnDestroy } from '@angular/core';
 import { DataBaseService } from '../service/data-base.service';
 import { FormBuilder } from '@angular/forms';
 import { environment } from '../../environments/environment';
 import {WebcamImage} from 'ngx-webcam';
 import {HttpClient } from '@angular/common/http';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -76,12 +76,9 @@ export class NewBusinessCardComponent implements OnInit, OnDestroy {
 
     this.subscription = this.http.post(url, request)
     .subscribe( (results: any) => {
-      //this.data = results;
-      const sTemp = JSON.stringify(results);
       console.log("RESULTS RESULTS RESULTS");
-      //console.log(sTemp);
+      const sTemp = JSON.stringify(results);
       this.getInfo(sTemp);
-      //console.log(JSON.stringify(results));
       console.log("RESULTS RESULTS RESULTS");
 
       
@@ -95,6 +92,7 @@ export class NewBusinessCardComponent implements OnInit, OnDestroy {
   {"responses":[{"textAnnotations":[{"locale":"it","description":"James C. Corcoran\n6318 N. Pulaski Rd., FI. 2\nChicago, IL 60646-4512\n","boundingPoly":{"vertices":[{"x":155,"y":191}
 
   */
+ 
   getInfo(str: String) {
           
     var start = str.indexOf("description");
@@ -107,35 +105,48 @@ export class NewBusinessCardComponent implements OnInit, OnDestroy {
     console.log(subTemp);
     const sArr = subTemp.split(/\\n/);
     console.log(sArr);
+
     this.setForm(sArr);
   }
 
-  setForm(sArr: string[]) {
-
+  setForm(sArr: string[]){ 
     var form = this.dataBaseService.cardForm;
     for(var i = 0; i < sArr.length; i++){
-      if(i === 0) {
-        form.patchValue({'firstName': sArr[i]});
-      }
+      switch(i){
 
-      else if(i === 1){
-        form.patchValue({'lastName': sArr[i]});
-      }
-
-      else if(i === 2){
-        form.patchValue({'email': sArr[i]});
-      }
-
-      else if(i === 3){
-        form.patchValue({'info': sArr[i]});
-      }
-
-      else if(i === 4){
-        form.patchValue({'phoneNumber': sArr[i]});
-      }
-      
-      else{
-        console.log(sArr[i]);
+        //first and last Names hopefully seperated by a space
+        case 0:{
+          const names = sArr[i].split(" ");
+          if(names.length > 1){
+            form.patchValue({'firstName': names[0]});
+            form.patchValue({'lastName': names[1]});
+          }
+          //just put whatever is there in firstName 
+          else {
+            form.patchValue({'firstName': names[0]});
+          }
+          break;
+        }
+         
+        case 1: {
+          form.patchValue({'email': sArr[i]});
+          break;
+        }
+           
+        case 2: {
+          form.patchValue({'info': sArr[i]});
+          break;
+        }
+             
+        case 3: {
+          form.patchValue({'phoneNumber': sArr[i]});
+          break; 
+        }
+          
+        default: {
+          console.log(sArr[i]);
+          break;
+        }
       }
     }
   }
