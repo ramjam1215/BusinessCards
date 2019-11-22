@@ -1,12 +1,18 @@
 # BusinessCardsApp
 
 # TODOs
-- Need to extract data from Google vision api and place into FormGroup 
 - Firebase hosting (not set yet)
-- As part of the newBusinessCard and Card list component navigation: i used the same formGroup object from my databaseService, which caused some old text persisting on the form after navigation (need to clean it up)
-- WebApp looks alot better, and is sort of satisfactory right now. But, i can do a few more things to improve its appearance
+- WebApp looks alot better, and is sort of satisfactory right now. But, i can do a few more things to improve its appearance. Like more information and notifications when certain interactions occur.
 
  # My Web Dev MOTTO: keep components simple stupid
+ - except for my new-business-card component, it kind of does alot with the webcam and post requests
+ 
+11-21-2019
+- extracted data from Google vision api and placed into FormGroup
+- extracts and turns data into a string and uses some string manipulation to get the data fields and uses patchValue() to update form
+- As part of the newBusinessCard and Card list component navigation: i used the same formGroup object from my databaseService, cleaned up the data that would persist after navigation.
+- utilized a subscribe in the http-post request, so I used OnDestory( ) to unsubscribe.
+- had to keep my redundant formGroup implementation in both the editMode(businessCardComponent) and newCardComponent, which had some slight differences. FormComponent is not implemented anymore.
 
 11-20-2019
 - removed my redundant FormGroup(copy and pasted) in both my businessCard and NewBusinssCard Components, they both use a 
