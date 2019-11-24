@@ -1,11 +1,13 @@
 # BusinessCardsApp
 
 # TODOs
-- Firebase hosting (not set yet)
 - WebApp looks alot better, and is sort of satisfactory right now. But, i can do a few more things to improve its appearance. Like more information and notifications when certain interactions occur.
 
  # My Web Dev MOTTO: keep components simple stupid
  - except for my new-business-card component, it kind of does alot with the webcam and post requests
+
+11-24-2019
+- added Firebase hosting
 
 11-22-2019
 - made some changes to how i read and parse the data from the OCR.
@@ -73,3 +75,4 @@ Now if canActivate( ) in the authguard returns false, it redirects to the NotFou
 - installed firebase @angular/fire --save
 - installed rxjs --save
 - installed ngx-webcam --save
+- installed firebase-tools -g --save
