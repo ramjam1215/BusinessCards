@@ -1,5 +1,6 @@
 # BusinessCardsApp
-
+- By: James Corcoran
+- FireBase Hosting URL: https://business-cards-app.firebaseapp.com
 # TODOs
 - WebApp looks alot better, and is sort of satisfactory right now. But, i can do a few more things to improve its appearance. Like more information and notifications when certain interactions occur.
 
